@@ -1,5 +1,7 @@
-import { Icon } from "@rneui/themed";
+import TaskItem from "@/components/TaskItem";
+import type React from "react";
 import { useState } from "react";
+
 import {
   Alert,
   FlatList,
@@ -45,21 +47,11 @@ export default function HomeScreen() {
 
   const renderTask = ({ item }: { item: { id: string; text: string } }) => {
     return (
-      <View style={styles.task}>
-        <Text style={styles.taskText}>{item.text}</Text>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity>
-            <Icon name="edit" color="#4caf50" onPress={() => handleEdit(item)}>
-              Edit
-            </Icon>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => handleDelete(item.id)}>
-            <Icon name="delete" color="#f44336">
-              Delete
-            </Icon>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <TaskItem
+        item={item}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
     );
   };
 
